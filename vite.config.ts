@@ -18,13 +18,15 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      "@": path.resolve(import.meta.dirname, "src"),
-      "@shared": path.resolve(import.meta.dirname, "..", "shared"),
-      "@assets": path.resolve(import.meta.dirname, "..", "attached_assets"),
+      "@": path.resolve(__dirname, "src"), // Changed from import.meta.dirname
+      "@shared": path.resolve(__dirname, "..", "shared"),
+      "@assets": path.resolve(__dirname, "..", "attached_assets"),
     },
   },
+  // Remove this line - it's causing the issue
+  // root: path.resolve(import.meta.dirname, "client"),
   build: {
-    outDir: "dist", // Changed from complex path to simple "dist"
+    outDir: "dist",
     emptyOutDir: true,
   },
   server: {
